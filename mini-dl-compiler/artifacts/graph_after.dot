@@ -1,0 +1,15 @@
+digraph G {
+  rankdir="LR";
+  splines=true;
+  bgcolor="white";
+  graph [fontsize=12, labelloc="t", label="Optimized Graph"];
+  node [fontname="Consolas", fontsize=10, style="filled"];
+  edge [fontname="Consolas", fontsize=9, color="#555555"];
+  n0 [label="op=input\\nname=x", shape=ellipse, fillcolor="lightgray", style="filled"];
+  n1 [label="op=const\\nname=W\\nshape=(2, 3)\\n[[1, 2, 3], [4, 5, 6]]", shape=box, fillcolor="lightgoldenrod1", style="filled"];
+  n2 [label="op=const\\nshape=(3,)\\n[6, 5, 4]", shape=box, fillcolor="lightgoldenrod1", style="filled"];
+  n3 [label="op=fused_mma_bias_relu\\nname=relu_out", shape=octagon, fillcolor="palegreen", style="filled,bold"];
+  n0 -> n3 [label="0"];
+  n1 -> n3 [label="1"];
+  n2 -> n3 [label="2"];
+}
