@@ -19,17 +19,15 @@
 
 ## 架构
 
-```
-y = ReLU(X@W + b)
-       |
-  +----+----+
-  |    |    |
-  天    人    地
-  |    |    |
-  +----+----+
-       |
-      毂 (ISA Mapper)
-  isa.py / isa_defines.vh
+```mermaid
+graph TD
+    算式["道<br/>y = ReLU(X@W + b)"]
+    算式 --> 天["天 · mini-dl-compiler<br/>为道日损 · 优化"]
+    算式 --> 人["人 · Soft_Stack<br/>木曰曲直 · 表达"]
+    算式 --> 地["地 · NPU_Project<br/>坤作成物 · 执行"]
+    天 --> 毂["毂 · ISA Mapper<br/>三十辐共一毂<br/>isa.py ↔ isa_defines.vh"]
+    人 --> 毂
+    毂 --> 地
 ```
 
 - 天 (mini-dl-compiler)：图优化引擎，Fold / Fuse / DCE / Tiling / Memory / SSA
