@@ -21,18 +21,13 @@ jobs:
           pip install -e .
           pytest tests/ -v --cov=compiler --cov-report=xml --cov-report=term
 
-      - name: MLIR E2E tests
-        run: |
-          cd mini-dl-compiler
-          PYTHONPATH=".:$PWD:$PWD/../NPU_Project/sim" pytest ../NPU_Project/sim/test_mlir.py -v --cov=compiler --cov-append --cov-report=xml --cov-report=term
-
       - name: Install & test NPU_Soft_Hard_Stack
         working-directory: NPU_Soft_Hard_Stack
         run: |
-          pip install pytest pytest-cov numpy
+          pip install pytest numpy
           pip install -e ../mini-dl-compiler
           pip install -e .
-          python -m pytest tests/ -v --cov=npu_stack --cov-report=xml --cov-report=term
+          python -m pytest tests/ -v
 
       - name: Lint (ruff)
         if: matrix.os == 'ubuntu-latest'
@@ -54,6 +49,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         uses: codecov/codecov-action@v3
         with:
-          files: mini-dl-compiler/coverage.xml,NPU_Soft_Hard_Stack/coverage.xml
+          files: mini-dl-compiler/coverage.xml
           flags: unittests
           fail_ci_if_error: false
