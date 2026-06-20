@@ -2,7 +2,7 @@
  全栈概要：PyTorch/ONNX 前端 → MLIR 多级降级 (Linalg→RVV) → 自研 NPU 硬件 (Verilog) + 双后端调度。单元测试覆盖 96 个用例。📌
 
 
-## 架构图
+## 「全栈架构图」
 
 ```mermaid
 graph TD
