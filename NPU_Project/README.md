@@ -1,4 +1,7 @@
-# NPU_Project — NPU 硬件加速器
+# NPU_Project · 卷叁
+光靠软件慢慢算太慢了，这个项目就是专门造那口真正能炒菜的“铁锅”。
+**但最值钱的是那个“防乱翻开关”（BARRIER）：**
+算得快不算本事，该刹得住才是真本事。不乱序、不乱翻，这口铁锅才能一直稳下去。
 
 > Verilog RTL · 参数化脉动阵列 · 自定义 32-bit ISA  
 > 与 mini-dl-compiler / NPU_Soft_Hard_Stack 底层互通 (共用 isa.py ↔ isa_defines.vh)
