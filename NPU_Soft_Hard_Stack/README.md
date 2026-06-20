@@ -1,4 +1,6 @@
-# NPU_Soft_Hard_Stack
+# NPU_Soft_Hard_Stack · 卷壹
+> 如果这是一口灶台：前端编译负责“看懂菜谱”（生成 AST），后端执行负责“下锅翻炒”（Runtime调度）。而这个项目，就是那个把“菜谱变成动作”的软硬连接中转站。
+
 
 > NPU 编译前端 — AST → TaskGraph → CPU/NPU 双 Backend
 
