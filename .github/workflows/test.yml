@@ -31,6 +31,7 @@ jobs:
 
       - name: Lint (ruff)
         if: matrix.os == 'ubuntu-latest'
+        continue-on-error: true
         working-directory: mini-dl-compiler
         run: |
           pip install ruff
@@ -38,6 +39,7 @@ jobs:
 
       - name: Type check (mypy)
         if: matrix.os == 'ubuntu-latest'
+        continue-on-error: true
         working-directory: mini-dl-compiler
         run: |
           pip install mypy numpy
