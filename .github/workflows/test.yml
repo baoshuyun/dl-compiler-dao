@@ -10,13 +10,17 @@ jobs:
           python-version: '3.10'
       - name: 安装依赖 (mini-dl)
         working-directory: mini-dl-compiler
-        run: pip install -e .
-      - name: 运行 96 个用例
+        run: |
+          pip install pytest numpy
+          pip install -e .
+      - name: 运行 97 个用例
         working-directory: mini-dl-compiler
         run: pytest tests/ -v
       - name: 安装依赖 (Soft Stack)
         working-directory: NPU_Soft_Hard_Stack
-        run: pip install -e .
+        run: |
+          pip install pytest numpy
+          pip install -e .
       - name: 运行 23 个用例
         working-directory: NPU_Soft_Hard_Stack
-        run: PYTHONPATH=../mini-dl-compiler pytest tests/ -v
+        run: PYTHONPATH="$PWD/../mini-dl-compiler" pytest tests/ -v
