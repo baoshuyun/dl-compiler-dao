@@ -14,20 +14,15 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install & test mini-dl-compiler
-        working-directory: mini-dl-compiler
+      - name: Install & test (mini-dl + MLIR + Soft_Stack)
         run: |
           pip install pytest pytest-cov numpy
-          pip install -e .
-          pytest tests/ -v --cov=compiler --cov-report=xml --cov-report=term
-
-      - name: Install & test NPU_Soft_Hard_Stack
-        working-directory: NPU_Soft_Hard_Stack
-        run: |
-          pip install pytest numpy
-          pip install -e ../mini-dl-compiler
-          pip install -e .
-          python -m pytest tests/ -v
+          cd mini-dl-compiler && pip install -e . && cd ..
+          cd NPU_Soft_Hard_Stack && pip install -e . && cd ..
+          cd mini-dl-compiler
+          pytest tests/ ../NPU_Project/sim/test_mlir.py -v --cov=compiler --cov-report=xml:coverage_minidl.xml --cov-report=term
+          cd ../NPU_Soft_Hard_Stack
+          python -m pytest tests/ -v --cov=npu_stack --cov-report=xml:coverage_softstack.xml --cov-report=term
 
       - name: Lint (ruff)
         if: matrix.os == 'ubuntu-latest'
@@ -49,6 +44,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         uses: codecov/codecov-action@v3
         with:
-          files: mini-dl-compiler/coverage.xml
+          files: mini-dl-compiler/coverage_minidl.xml,NPU_Soft_Hard_Stack/coverage_softstack.xml
           flags: unittests
           fail_ci_if_error: false
