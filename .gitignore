@@ -19,3 +19,8 @@ dist/
 *~
 .DS_Store
 Thumbs.db
+*.log
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
