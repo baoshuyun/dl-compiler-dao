@@ -49,6 +49,6 @@ jobs:
         if: matrix.os == 'ubuntu-latest'
         uses: codecov/codecov-action@v3
         with:
-          directory: mini-dl-compiler
+          files: mini-dl-compiler/coverage.xml
           flags: unittests
           fail_ci_if_error: false
