@@ -4,10 +4,8 @@
 
 📌 全栈概要：PyTorch/ONNX 前端 → MLIR 多级降级 (Linalg→RVV) → 自研 NPU 硬件 (Verilog) + 双后端调度。单元测试覆盖 120 个用例。
 
-![全栈架构](structure.png)
 
-
-## 「全栈架构图」
+## 全局架构心法
 
 ```mermaid
 graph TD
@@ -19,6 +17,13 @@ graph TD
     人 --> 毂
     毂 --> 地
 ```
+
+
+## 技术流实修图
+
+<img src="tech_arch.svg" width="100%" alt="全栈技术链路图" />
+
+*(从 PyTorch/ONNX 前端，经 linalg 中间表示，分流至 mini-dl-compiler 和 NPU_Soft_Hard_Stack，在 ISA Mapper 汇合后，最终生成 RVV 指令和 NPU 硬件 RTL 并跑通仿真验证。)*
 
 
 ## 如果这是一口灶台
